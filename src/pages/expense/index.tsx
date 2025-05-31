@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { Flex, notification, Space } from 'antd';
 import dayjs from 'dayjs';
+import { useRecoilState } from 'recoil';
 
 import { ExplorerChart } from '@/components/charts/explorer';
 import { PieChart } from '@/components/charts/pie';
@@ -8,7 +9,7 @@ import { BaseCardLayout } from '@/components/common-components/base-card-layout'
 import { GranularityPicker } from '@/components/common-components/granularity-picker';
 import { TransitionTable } from '@/components/common-components/transition-table';
 import { TransitionForm } from '@/components/forms/transition-form';
-import { useGranularityStore } from '@/store/granularityStore';
+import { PeriodGranularityState, TypeGranularityState } from '@/store/granularity';
 import { NotificationType, useNotificationStore } from '@/store/notificationStore';
 import { useUserStore } from '@/store/userStore';
 import { GRANULARITY_ENUM } from '@/types/granularity';
@@ -19,7 +20,8 @@ import styles from './styles.module.css';
 export const ExpensePage = () => {
   const { notification: notificationData, removeNotification } = useNotificationStore();
   const [api] = notification.useNotification();
-  const { period, type } = useGranularityStore();
+  const [period] = useRecoilState(PeriodGranularityState);
+  const [type] = useRecoilState(TypeGranularityState);
 
   const { user, getTransactionsByType, loading } = useUserStore();
 

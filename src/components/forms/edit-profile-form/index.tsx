@@ -1,13 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { UserOutlined } from '@ant-design/icons';
 import { useMutation } from '@apollo/client';
 import { Avatar, Button, Form, Input, Popover, Spin, Typography } from 'antd';
+import ErrorBoundary from 'antd/es/alert/ErrorBoundary';
+import { useRecoilValue } from 'recoil';
 
 import { EDIT_USER, REGISTER_CREATE_USER } from '@/lib/graphQL/users';
-import { AvatarType, useAvatarStore } from '@/store/avatarStore';
+import { avatarsSelector } from '@/store/avatar';
 import { useNotificationStore } from '@/store/notificationStore';
 import { useUserStore } from '@/store/userStore';
+import { AvatarType } from '@/types/avatar';
 import { checkPassword } from '@/utils/check-password';
 import { getHashPassword } from '@/utils/getHashPassword';
 
@@ -20,7 +23,7 @@ type EditFormProps = {
 export const EditProfileForm = () => {
   const { user } = useUserStore();
   const { setNotification } = useNotificationStore();
-  const { avatars, loading: loadingAvatars } = useAvatarStore();
+  const avatars = useRecoilValue(avatarsSelector);
 
   const [form] = Form.useForm();
   const [editUser, { loading }] = useMutation<EditFormProps>(EDIT_USER);
@@ -113,21 +116,21 @@ export const EditProfileForm = () => {
         <Typography.Title level={2}>Редактировать профиль</Typography.Title>
         <Popover
           content={
-            loadingAvatars ? (
-              <Spin />
-            ) : (
-              <div className={styles.avatarList}>
-                {avatars?.map((avatar) => (
-                  <Avatar
-                    key={avatar.id}
-                    src={avatar.url}
-                    size={64}
-                    style={{ cursor: 'pointer', margin: 4 }}
-                    onClick={() => handleAvatarSelect(avatar)}
-                  />
-                ))}
-              </div>
-            )
+            <ErrorBoundary>
+              <Suspense fallback={<Spin size="large" />}>
+                <div className={styles.avatarList}>
+                  {avatars?.map((avatar: any) => (
+                    <Avatar
+                      key={avatar.id}
+                      src={avatar.url}
+                      size={64}
+                      style={{ cursor: 'pointer', margin: 4 }}
+                      onClick={() => handleAvatarSelect(avatar)}
+                    />
+                  ))}
+                </div>
+              </Suspense>
+            </ErrorBoundary>
           }
           title="Выберите аватар"
           trigger="click"

@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Flex, notification } from 'antd';
 
 import { EditProfileForm } from '@/components/forms/edit-profile-form';
-import { AVATAR_IDS, useAvatarStore } from '@/store/avatarStore';
 import { NotificationType, useNotificationStore } from '@/store/notificationStore';
 
 import styles from './styles.module.css';
@@ -10,11 +9,6 @@ import styles from './styles.module.css';
 export const EditPage = () => {
   const { notification: notificationData, removeNotification } = useNotificationStore();
   const [api] = notification.useNotification();
-  const { fetchAvatars } = useAvatarStore();
-
-  useEffect(() => {
-    fetchAvatars(AVATAR_IDS);
-  }, [fetchAvatars]);
 
   useEffect(() => {
     if (notificationData?.type) {
