@@ -4,7 +4,7 @@ import { Button, DatePicker, Form, Input, InputNumber } from 'antd';
 import dayjs from 'dayjs';
 
 import { CREATE_GOAL, PUBLISH_GOAL } from '@/lib/graphQL/goal';
-import { useNotificationStore } from '@/store/notificationStore';
+import { useNotificationStore } from '@/store/notification/useNotificationStore';
 import { useUserStore } from '@/store/userStore';
 import { GoalType } from '@/types/goal';
 

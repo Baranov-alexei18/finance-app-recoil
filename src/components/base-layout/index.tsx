@@ -7,7 +7,8 @@ import { useLazyQuery } from '@apollo/client';
 import { Button, Layout, Menu, notification } from 'antd';
 
 import { GET_USER_BY_ID } from '@/lib/graphQL/users';
-import { NotificationType, useNotificationStore } from '@/store/notificationStore';
+import { NotificationType } from '@/store/notification/notificationStore';
+import { useNotificationStore } from '@/store/notification/useNotificationStore';
 import { useUserStore } from '@/store/userStore';
 
 import { HeaderApp } from '../header-app';

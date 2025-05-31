@@ -6,7 +6,7 @@ import { Button, Checkbox, Flex, Form, Input } from 'antd';
 
 import { ROUTE_PATHS } from '@/constants/route-path';
 import { GET_USER_BY_EMAIL } from '@/lib/graphQL/users';
-import { useNotificationStore } from '@/store/notificationStore';
+import { useNotificationStore } from '@/store/notification/useNotificationStore';
 import { UserType } from '@/types/user';
 import { checkPassword } from '@/utils/check-password';
 

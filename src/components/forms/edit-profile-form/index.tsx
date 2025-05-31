@@ -7,8 +7,8 @@ import ErrorBoundary from 'antd/es/alert/ErrorBoundary';
 import { useRecoilValue } from 'recoil';
 
 import { EDIT_USER, REGISTER_CREATE_USER } from '@/lib/graphQL/users';
-import { avatarsSelector } from '@/store/avatar';
-import { useNotificationStore } from '@/store/notificationStore';
+import { avatarsSelector } from '@/store/avatar/avatar';
+import { useNotificationStore } from '@/store/notification/useNotificationStore';
 import { useUserStore } from '@/store/userStore';
 import { AvatarType } from '@/types/avatar';
 import { checkPassword } from '@/utils/check-password';

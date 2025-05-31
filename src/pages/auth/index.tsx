@@ -4,7 +4,8 @@ import { notification, Tabs } from 'antd';
 
 import { AuthForm } from '@/components/forms/auth-form';
 import { RegisterForm } from '@/components/forms/register-form';
-import { NotificationType, useNotificationStore } from '@/store/notificationStore';
+import { NotificationType } from '@/store/notification/notificationStore';
+import { useNotificationStore } from '@/store/notification/useNotificationStore';
 
 import styles from './styles.module.css';
 

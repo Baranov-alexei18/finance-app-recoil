@@ -9,8 +9,9 @@ import { BaseCardLayout } from '@/components/common-components/base-card-layout'
 import { GranularityPicker } from '@/components/common-components/granularity-picker';
 import { TransitionTable } from '@/components/common-components/transition-table';
 import { TransitionForm } from '@/components/forms/transition-form';
-import { PeriodGranularityState, TypeGranularityState } from '@/store/granularity';
-import { NotificationType, useNotificationStore } from '@/store/notificationStore';
+import { PeriodGranularityState, TypeGranularityState } from '@/store/granularity/granularity';
+import { NotificationType } from '@/store/notification/notificationStore';
+import { useNotificationStore } from '@/store/notification/useNotificationStore';
 import { useUserStore } from '@/store/userStore';
 import { GRANULARITY_ENUM } from '@/types/granularity';
 import { TransitionEnum } from '@/types/transition';

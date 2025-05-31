@@ -5,7 +5,7 @@ import { Avatar, Button, Dropdown, Flex, Layout, MenuProps, Select, Space } from
 import { useSetRecoilState } from 'recoil';
 
 import { GRANULARITY } from '@/constants/granularity';
-import { TypeGranularityState } from '@/store/granularity';
+import { TypeGranularityState } from '@/store/granularity/granularity';
 import { calculateBalance } from '@/utils/calculate-balance';
 
 import { ROUTE_PATHS } from '../../constants/route-path';

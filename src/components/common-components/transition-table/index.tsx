@@ -10,7 +10,7 @@ import {
   EDIT_TRANSITION,
   REGISTER_CREATE_TRANSITION,
 } from '@/lib/graphQL/transition';
-import { useNotificationStore } from '@/store/notificationStore';
+import { useNotificationStore } from '@/store/notification/useNotificationStore';
 import { useUserStore } from '@/store/userStore';
 import { TransitionEnum, TransitionType } from '@/types/transition';
 import { getCapitalizeFirstLetter } from '@/utils/get-capitalize-first-letter';

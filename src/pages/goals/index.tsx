@@ -4,7 +4,8 @@ import { notification, Space, Typography } from 'antd';
 import { BaseCardLayout } from '@/components/common-components/base-card-layout';
 import { GoalsTable } from '@/components/common-components/goals-table';
 import { GoalForm } from '@/components/forms/goal-form';
-import { NotificationType, useNotificationStore } from '@/store/notificationStore';
+import { NotificationType } from '@/store/notification/notificationStore';
+import { useNotificationStore } from '@/store/notification/useNotificationStore';
 import { useUserStore } from '@/store/userStore';
 
 import { INIT_VALUES } from './constants';
