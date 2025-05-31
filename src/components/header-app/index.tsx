@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router';
 import { DownOutlined, EyeInvisibleOutlined, EyeOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Button, Dropdown, Flex, Layout, MenuProps, Select, Space } from 'antd';
+import { useSetRecoilState } from 'recoil';
 
 import { GRANULARITY } from '@/constants/granularity';
-import { useGranularityStore } from '@/store/granularityStore';
+import { TypeGranularityState } from '@/store/granularity';
 import { calculateBalance } from '@/utils/calculate-balance';
 
 import { ROUTE_PATHS } from '../../constants/route-path';
@@ -17,7 +18,7 @@ const { Header } = Layout;
 export const HeaderApp = () => {
   const navigate = useNavigate();
   const { user } = useUserStore();
-  const { setGranularityType } = useGranularityStore();
+  const setGranularityType = useSetRecoilState(TypeGranularityState);
 
   const [balanceVisible, setBalanceVisible] = useState(
     sessionStorage.getItem('isBalanceVisible') === 'true'

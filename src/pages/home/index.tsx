@@ -3,13 +3,14 @@ import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router';
 import { Button, Flex, List, notification, Progress, Space, Typography } from 'antd';
 import dayjs from 'dayjs';
+import { useRecoilState } from 'recoil';
 
 import { PieChart } from '@/components/charts/pie';
 import { BaseCardLayout } from '@/components/common-components/base-card-layout';
 import { GranularityPicker } from '@/components/common-components/granularity-picker';
 import { RecentTransitions } from '@/components/common-components/recent-transitions';
 import { ROUTE_PATHS } from '@/constants/route-path';
-import { useGranularityStore } from '@/store/granularityStore';
+import { PeriodGranularityState, TypeGranularityState } from '@/store/granularity';
 import { NotificationType, useNotificationStore } from '@/store/notificationStore';
 import { useUserStore } from '@/store/userStore';
 import { GRANULARITY_ENUM } from '@/types/granularity';
@@ -22,7 +23,8 @@ export const HomePage = () => {
   const navigate = useNavigate();
   const { notification: notificationData, removeNotification } = useNotificationStore();
   const [api] = notification.useNotification();
-  const { period, type } = useGranularityStore();
+  const [period] = useRecoilState(PeriodGranularityState);
+  const [type] = useRecoilState(TypeGranularityState);
 
   const { user, getTransactionsByType, loading } = useUserStore();
 

@@ -4,12 +4,13 @@ import { TransitionForm } from '@components/forms/transition-form';
 import { NotificationType, useNotificationStore } from '@store/notificationStore';
 import { Flex, notification, Space } from 'antd';
 import dayjs from 'dayjs';
+import { useRecoilState } from 'recoil';
 
 import { ExplorerChart } from '@/components/charts/explorer';
 import { PieChart } from '@/components/charts/pie';
 import { GranularityPicker } from '@/components/common-components/granularity-picker';
 import { TransitionTable } from '@/components/common-components/transition-table';
-import { useGranularityStore } from '@/store/granularityStore';
+import { PeriodGranularityState, TypeGranularityState } from '@/store/granularity';
 import { useUserStore } from '@/store/userStore';
 import { GRANULARITY_ENUM } from '@/types/granularity';
 import { TransitionEnum } from '@/types/transition';
@@ -20,7 +21,8 @@ export const IncomePage = () => {
   const { notification: notificationData, removeNotification } = useNotificationStore();
   const [api] = notification.useNotification();
   const { user, getTransactionsByType, loading } = useUserStore();
-  const { period, type } = useGranularityStore();
+  const [period] = useRecoilState(PeriodGranularityState);
+  const [type] = useRecoilState(TypeGranularityState);
 
   const incomeTransitions = useMemo(() => {
     const transitionsIncome = getTransactionsByType(TransitionEnum.INCOME);

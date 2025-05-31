@@ -3,9 +3,10 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Calendar } from 'antd';
 import { Popover } from 'antd';
 import { Dayjs } from 'dayjs';
+import { useRecoilState } from 'recoil';
 
 import { GRANULARITY } from '@/constants/granularity';
-import { useGranularityStore } from '@/store/granularityStore';
+import { PeriodGranularityState, TypeGranularityState } from '@/store/granularity';
 import { GRANULARITY_ENUM } from '@/types/granularity';
 
 import styles from './styles.module.css';
@@ -29,7 +30,8 @@ const formatByGranularity: Record<GranularityKey, (date: Dayjs) => string> = {
 };
 
 export const GranularityPicker = () => {
-  const { type, period, setGranularityPeriod } = useGranularityStore();
+  const [type] = useRecoilState(TypeGranularityState);
+  const [period, setGranularityPeriod] = useRecoilState(PeriodGranularityState);
   const [open, setOpen] = useState(false);
 
   const handleArrowClick = (dir: 'prev' | 'next') => {
