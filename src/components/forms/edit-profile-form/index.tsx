@@ -8,9 +8,9 @@ import { useRecoilValue } from 'recoil';
 
 import { EDIT_USER, REGISTER_CREATE_USER } from '@/lib/graphQL/users';
 import { avatarsSelector } from '@/store/avatar';
-import { AvatarType } from '@/store/avatarStore';
 import { useNotificationStore } from '@/store/notificationStore';
 import { useUserStore } from '@/store/userStore';
+import { AvatarType } from '@/types/avatar';
 import { checkPassword } from '@/utils/check-password';
 import { getHashPassword } from '@/utils/getHashPassword';
 
