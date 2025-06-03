@@ -9,7 +9,7 @@ import { TransitionEditType } from '@/components/common-components/transition-ta
 import { CREATE_CATEGORY, REGISTER_CREATE_CATEGORY } from '@/lib/graphQL/category';
 import { CREATE_TRANSITION, REGISTER_CREATE_TRANSITION } from '@/lib/graphQL/transition';
 import { useNotificationStore } from '@/store/notification/useNotificationStore';
-import { useUserStore } from '@/store/userStore';
+import { useUserStore } from '@/store/user/useUserStore';
 import { TransitionEnum, TransitionType } from '@/types/transition';
 import { getCapitalizeFirstLetter } from '@/utils/get-capitalize-first-letter';
 

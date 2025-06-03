@@ -6,10 +6,11 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { useLazyQuery } from '@apollo/client';
 import { Button, Layout, Menu, notification } from 'antd';
 
+import { ROUTE_PATHS } from '@/constants/route-path';
 import { GET_USER_BY_ID } from '@/lib/graphQL/users';
 import { NotificationType } from '@/store/notification/notificationStore';
 import { useNotificationStore } from '@/store/notification/useNotificationStore';
-import { useUserStore } from '@/store/userStore';
+import { useUserStore } from '@/store/user/useUserStore';
 
 import { HeaderApp } from '../header-app';
 import { MENU_ITEMS } from './constants';
@@ -23,10 +24,10 @@ export const LayoutApp = () => {
   const [api, contextHolder] = notification.useNotification();
   const { notification: notificationData, removeNotification } = useNotificationStore();
   const location = useLocation();
-
+  const { setLoading, setError, setUser } = useUserStore();
   const [fetchUserById] = useLazyQuery<any>(GET_USER_BY_ID);
 
-  const selectedKey = location.pathname.split('/')[1] || 'home';
+  const selectedKey = location.pathname.split('/')[1] || ROUTE_PATHS.home;
 
   useEffect(() => {
     const id = sessionStorage.getItem('userId');
@@ -35,29 +36,26 @@ export const LayoutApp = () => {
       if (!id) return;
 
       try {
-        useUserStore.setState({ loading: true, error: null });
+        setLoading(true);
+        setError(null);
 
         const { data } = await fetchUserById({ variables: { id } });
 
         if (data?.authUser) {
-          useUserStore.setState({ user: data.authUser, loading: false });
-        } else {
-          useUserStore.setState({ user: null, loading: false });
+          setUser(data.authUser);
+          setLoading(false);
         }
-      } catch (e) {
-        console.error(e);
-        useUserStore.setState({
-          user: null,
-          error: Error('Ошибка загрузки пользователя'),
-          loading: false,
-        });
+      } catch {
+        setUser(null);
+        setLoading(false);
+        setError(Error('Ошибка загрузки пользователя'));
       }
     };
 
     if (id) {
       getUserById(id);
     }
-  }, [fetchUserById]);
+  }, [fetchUserById, setError, setLoading, setUser]);
 
   useEffect(() => {
     if (notificationData?.type) {

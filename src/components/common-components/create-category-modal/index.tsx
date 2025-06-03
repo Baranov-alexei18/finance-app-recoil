@@ -5,7 +5,7 @@ import { Button, ColorPicker, Input, List, Modal, Popconfirm, Tooltip } from 'an
 
 import { DELETE_CATEGORY, EDIT_CATEGORY, REGISTER_CREATE_CATEGORY } from '@/lib/graphQL/category';
 import { useNotificationStore } from '@/store/notification/useNotificationStore';
-import { useUserStore } from '@/store/userStore';
+import { useUserStore } from '@/store/user/useUserStore';
 import { TransitionEnum } from '@/types/transition';
 import { getCapitalizeFirstLetter } from '@/utils/get-capitalize-first-letter';
 

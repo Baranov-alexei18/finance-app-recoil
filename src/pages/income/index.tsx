@@ -12,7 +12,7 @@ import { TransitionTable } from '@/components/common-components/transition-table
 import { PeriodGranularityState, TypeGranularityState } from '@/store/granularity/granularity';
 import { NotificationType } from '@/store/notification/notificationStore';
 import { useNotificationStore } from '@/store/notification/useNotificationStore';
-import { useUserStore } from '@/store/userStore';
+import { useUserStore } from '@/store/user/useUserStore';
 import { GRANULARITY_ENUM } from '@/types/granularity';
 import { TransitionEnum } from '@/types/transition';
 

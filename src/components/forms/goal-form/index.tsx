@@ -5,7 +5,7 @@ import dayjs from 'dayjs';
 
 import { CREATE_GOAL, PUBLISH_GOAL } from '@/lib/graphQL/goal';
 import { useNotificationStore } from '@/store/notification/useNotificationStore';
-import { useUserStore } from '@/store/userStore';
+import { useUserStore } from '@/store/user/useUserStore';
 import { GoalType } from '@/types/goal';
 
 import styles from './styles.module.css';

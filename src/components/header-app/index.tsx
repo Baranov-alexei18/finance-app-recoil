@@ -6,10 +6,10 @@ import { useSetRecoilState } from 'recoil';
 
 import { GRANULARITY } from '@/constants/granularity';
 import { TypeGranularityState } from '@/store/granularity/granularity';
+import { useUserStore } from '@/store/user/useUserStore';
 import { calculateBalance } from '@/utils/calculate-balance';
 
 import { ROUTE_PATHS } from '../../constants/route-path';
-import { useUserStore } from '../../store/userStore';
 
 import styles from './styles.module.css';
 

@@ -6,7 +6,7 @@ import { GoalsTable } from '@/components/common-components/goals-table';
 import { GoalForm } from '@/components/forms/goal-form';
 import { NotificationType } from '@/store/notification/notificationStore';
 import { useNotificationStore } from '@/store/notification/useNotificationStore';
-import { useUserStore } from '@/store/userStore';
+import { useUserStore } from '@/store/user/useUserStore';
 
 import { INIT_VALUES } from './constants';
 

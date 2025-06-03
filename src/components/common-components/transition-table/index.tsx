@@ -11,7 +11,7 @@ import {
   REGISTER_CREATE_TRANSITION,
 } from '@/lib/graphQL/transition';
 import { useNotificationStore } from '@/store/notification/useNotificationStore';
-import { useUserStore } from '@/store/userStore';
+import { useUserStore } from '@/store/user/useUserStore';
 import { TransitionEnum, TransitionType } from '@/types/transition';
 import { getCapitalizeFirstLetter } from '@/utils/get-capitalize-first-letter';
 
@@ -28,7 +28,7 @@ export type TransitionEditType = Omit<TransitionType, 'category'> & {
 };
 
 export const TransitionTable = ({ transitions }: Props) => {
-  const { deleteTransactionById, updateTransactionById } = useUserStore((state) => state);
+  const { deleteTransactionById, updateTransactionById } = useUserStore();
   const [deleteTransition, { loading: removeLoading }] = useMutation(DELETE_TRANSITION);
   const [updateTransition, { loading: updateLoading }] = useMutation(EDIT_TRANSITION);
   const [publishTransition] = useMutation(REGISTER_CREATE_TRANSITION);
@@ -245,7 +245,7 @@ export const TransitionTable = ({ transitions }: Props) => {
         okButtonProps={{ danger: true }}
         loading={removeLoading}
       >
-        <p>Вы уверены, что хотите удалить транзакцию с описанием "{selectedRecord?.note}"?</p>
+        <p>Вы уверены, что хотите удалить транзакцию?</p>
       </Modal>
     </Space>
   );
