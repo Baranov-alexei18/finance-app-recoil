@@ -6,7 +6,7 @@ import { Dayjs } from 'dayjs';
 import { useRecoilState } from 'recoil';
 
 import { GRANULARITY } from '@/constants/granularity';
-import { PeriodGranularityState, TypeGranularityState } from '@/store/granularity';
+import { PeriodGranularityState, TypeGranularityState } from '@/store/granularity/granularity';
 import { GRANULARITY_ENUM } from '@/types/granularity';
 
 import styles from './styles.module.css';

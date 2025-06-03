@@ -4,7 +4,7 @@ import type { FormProps } from 'antd';
 import { Button, Form, Input } from 'antd';
 
 import { CREATE_USER, REGISTER_CREATE_USER } from '@/lib/graphQL/users';
-import { useNotificationStore } from '@/store/notificationStore';
+import { useNotificationStore } from '@/store/notification/useNotificationStore';
 import { UserType } from '@/types/user';
 import { getHashPassword } from '@/utils/getHashPassword';
 

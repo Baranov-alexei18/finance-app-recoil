@@ -1,7 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import { BaseCardLayout } from '@components/common-components/base-card-layout';
 import { TransitionForm } from '@components/forms/transition-form';
-import { NotificationType, useNotificationStore } from '@store/notificationStore';
 import { Flex, notification, Space } from 'antd';
 import dayjs from 'dayjs';
 import { useRecoilState } from 'recoil';
@@ -10,8 +9,10 @@ import { ExplorerChart } from '@/components/charts/explorer';
 import { PieChart } from '@/components/charts/pie';
 import { GranularityPicker } from '@/components/common-components/granularity-picker';
 import { TransitionTable } from '@/components/common-components/transition-table';
-import { PeriodGranularityState, TypeGranularityState } from '@/store/granularity';
-import { useUserStore } from '@/store/userStore';
+import { PeriodGranularityState, TypeGranularityState } from '@/store/granularity/granularity';
+import { NotificationType } from '@/store/notification/notificationStore';
+import { useNotificationStore } from '@/store/notification/useNotificationStore';
+import { useUserStore } from '@/store/user/useUserStore';
 import { GRANULARITY_ENUM } from '@/types/granularity';
 import { TransitionEnum } from '@/types/transition';
 

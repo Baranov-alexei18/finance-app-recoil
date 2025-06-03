@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { Flex, notification } from 'antd';
 
 import { EditProfileForm } from '@/components/forms/edit-profile-form';
-import { NotificationType, useNotificationStore } from '@/store/notificationStore';
+import { NotificationType } from '@/store/notification/notificationStore';
+import { useNotificationStore } from '@/store/notification/useNotificationStore';
 
 import styles from './styles.module.css';
 
