@@ -42,7 +42,16 @@ export const GoalForm = ({ data }: GoalFormProps) => {
 
       await publishGoal({ variables: { id: data.createGoal.id } });
 
-      addNewGoal(values);
+      console.log(values);
+
+      const valuesData = {
+        ...values,
+        startDate: new Date(values.start_date),
+        endDate: new Date(values.end_date),
+        targetAmount: values.target_amount,
+      };
+
+      addNewGoal(valuesData);
       setNotification({
         type: 'success',
         message: 'Успешно',

@@ -20,7 +20,7 @@ export const RecentTransitions = ({ type, transitions }: Props) => {
   const title = type === TransitionEnum.INCOME ? 'Последние доходы' : 'Последние расходы';
 
   return (
-    <Space direction="vertical" style={{ width: '100%' }}>
+    <Space direction="vertical" style={{ width: '100%', height: '100%' }}>
       <Typography.Title level={2}>{title}</Typography.Title>
       <List
         dataSource={filtered}
@@ -42,6 +42,7 @@ export const RecentTransitions = ({ type, transitions }: Props) => {
             </div>
           </List.Item>
         )}
+        style={{ height: '100%' }}
       />
       <Button
         variant="outlined"

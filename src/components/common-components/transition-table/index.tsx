@@ -23,8 +23,9 @@ type Props = {
   transitions: TransitionType[];
 };
 
-export type TransitionEditType = Omit<TransitionType, 'category'> & {
+export type TransitionEditType = Omit<TransitionType, 'category' | 'goal'> & {
   category: { connect: { id: string } };
+  goal: { connect: { id: string } };
 };
 
 export const TransitionTable = ({ transitions }: Props) => {
@@ -63,7 +64,9 @@ export const TransitionTable = ({ transitions }: Props) => {
             category: {
               connect: { id: record.category?.connect?.id || null },
             },
-            goal: record.goal?.id || null,
+            goal: {
+              connect: { id: record.goal?.connect?.id || null },
+            },
           },
         },
       });

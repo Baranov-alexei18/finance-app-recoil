@@ -77,9 +77,11 @@ export const TransitionForm = ({ title, type, data, onEdit, onCancel }: Props) =
       category: {
         connect: { id: values.category },
       },
-      goal: {
-        connect: { id: values.goal },
-      },
+      goal: values.goal
+        ? {
+            connect: { id: values.goal },
+          }
+        : {},
       type: type,
       date: formattedDate,
       amount: Number(values.amount),
@@ -216,7 +218,7 @@ export const TransitionForm = ({ title, type, data, onEdit, onCancel }: Props) =
         </Form.Item>
 
         <div className={styles.wrapperCategories}>
-          <Form.Item name="category">
+          <Form.Item name="category" rules={[{ required: true, message: 'Обязательно' }]}>
             <Select
               showSearch
               size="large"
@@ -245,7 +247,7 @@ export const TransitionForm = ({ title, type, data, onEdit, onCancel }: Props) =
               size="large"
               placeholder="Цель"
               options={userGoals}
-              defaultValue={null}
+              defaultValue={userGoals?.[0] || null}
               optionFilterProp="label"
               filterSort={(optionA, optionB) =>
                 (optionA?.label ?? '')
