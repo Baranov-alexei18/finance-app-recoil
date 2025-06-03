@@ -87,7 +87,6 @@ export const ExpensePage = () => {
       )}
       <BaseCardLayout>
         <TransitionTable transitions={expenseTransitions} />
-        {expenseTransitions.length}
       </BaseCardLayout>
     </div>
   );

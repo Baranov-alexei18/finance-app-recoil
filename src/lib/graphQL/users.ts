@@ -38,6 +38,12 @@ export const GET_USER_BY_ID = gql`
           name
           chartColor
         }
+        goal {
+          id
+          title
+          targetAmount
+          endDate
+        }
         date
         note
         type
